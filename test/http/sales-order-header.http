@@ -1,0 +1,17 @@
+@localhost = localhost:4004/odata/v4/main
+
+Get http://{{localhost}}/SalesOrderHeaders
+Content-type: application/json
+
+###
+//criação novo registro
+post http://localhost:4004/odata/v4/main/SalesOrderHeaders
+Content-type: application/json
+
+{}
+
+###
+
+//deleção registro
+delete http://{{localhost}}/SalesOrderHeaders(id=c49902ce-d478-4165-8592-e324dd89e3e8)
+Content-type: application/json
