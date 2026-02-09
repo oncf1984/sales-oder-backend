@@ -1,0 +1,53 @@
+@localhost = localhost:4004/odata/v4/main
+@id = cd58215d-2bb0-4576-babf-7c25cfff6c2b
+
+Get http://{{localhost}}/Customers
+Content-type: application/json
+
+###
+// criação novo registro
+post http://{{localhost}}/Customers
+Content-type: application/json
+
+{
+  "id": "{{id}}",
+  "firstName": "Ortiz",
+  "lastName": "Filho",
+  "email": "ortiz.filho@gmail.com"
+}
+
+# entity Customers {
+#     key id        : UUID;
+#         firstName : String(20);
+#         lastName  : String(100);
+#         email     : String(255);
+
+# }
+
+###
+//deleção
+delete http://{{localhost}}/Customers(id = {{id}})
+
+###
+//atualização payload inteiro
+put http://{{localhost}}/Customers(id = {{id}})
+Content-type: application/json
+
+{
+  "id": "{{id}}",
+  "firstName": "Ortiz",
+  "lastName": "Filho",
+  "email": "ortiz_nogueira@hotmail.com"
+}
+
+###
+//atualização apenas alguns campos
+patch http://{{localhost}}/Customers(id = {{id}})
+Content-type: application/json
+
+{
+  "id": "{{id}}",
+  "firstName": "Ortiz",
+  "lastName": "Filho",
+  "email": "ortiz_nogueira@hotmail.com"
+}
