@@ -1,0 +1,53 @@
+@localhost = localhost:4004/odata/v4/main
+@id = 77ace1b1-7980-493e-9658-b9cc955c312e
+@id2 = cf175d1a-ea0e-41f8-8b95-1ce2388ccf42
+
+Get http://{{localhost}}/Products
+Content-type: application/json
+
+###
+//busca apenas 1 registro
+Get http://{{localhost}}/Products({{id}})
+Content-type: application/json
+
+
+###
+// criação novo registro
+post http://{{localhost}}/Products
+Content-type: application/json
+
+{
+  "id": "{{id2}}",
+  "name": "pizza portuguesa",
+  "price": "80"  
+}
+
+# entity Products {
+#     key id    : UUID;
+#         name  : String(255);
+#         price : Decimal(15, 2);
+# }
+
+###
+//deleção
+delete http://{{localhost}}/Products(id = {{id}})
+
+###
+//atualização payload inteiro
+put http://{{localhost}}/Products(id = {{id}})
+Content-type: application/json
+
+{
+  "id": "{{id}}",
+  "name": "pizza 4 queijos",
+  "price": "66"  
+}
+
+###
+//atualização apenas alguns campos
+patch http://{{localhost}}/Products(id = {{id}})
+Content-type: application/json
+
+{
+  "price": "60"
+}

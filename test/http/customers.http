@@ -5,6 +5,12 @@ Get http://{{localhost}}/Customers
 Content-type: application/json
 
 ###
+//busca apenas 1 registro
+Get http://{{localhost}}/Customers({{id}})
+Content-type: application/json
+
+
+###
 // criação novo registro
 post http://{{localhost}}/Customers
 Content-type: application/json
@@ -46,8 +52,5 @@ patch http://{{localhost}}/Customers(id = {{id}})
 Content-type: application/json
 
 {
-  "id": "{{id}}",
-  "firstName": "Ortiz",
-  "lastName": "Filho",
-  "email": "ortiz_nogueira@hotmail.com"
+  "email": "ortiz.filho@castgroup.com.br"
 }
