@@ -54,3 +54,23 @@ Content-type: application/json
 {
   "email": "ortiz.filho@castgroup.com.br"
 }
+
+###
+// contagem registros
+get http://{{localhost}}/Customers/$count
+
+###
+// paginação
+get http://{{localhost}}/Customers?$skip=2&$top=2
+
+###
+// ordenação
+get http://{{localhost}}/Customers?$select= email&$orderby= email asc
+
+###
+// filtro
+get http://{{localhost}}/Customers?$filter= firstName eq 'Ortiz'
+
+###
+//search
+get http://{{localhost}}/Customers?$search= Ortiz
