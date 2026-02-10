@@ -2,7 +2,7 @@
 @id = 5751e59a-75ee-469b-b79b-7e89ef5944f3
 //@customerID = cd58215d-2bb0-4576-babf-7c25cfff6c2b
 @customerID = 23605262-fb2c-4f1b-8625-a0a452c29f14
-@productID = 18767552-0f35-4c66-8584-867c96933ed3
+@productID = 18767552-0f35-4c66-8584-867c96933ed0
 @productID2 = 18767551-141b-45b9-9d29-352fd1628709
 
 Get http://{{localhost}}/SalesOrderHeaders

@@ -15,7 +15,7 @@
 // funcao('123');
 
 import cds, { Request, Service } from '@sap/cds';
-import { Customers, Product, Products, SalesOrderHeaders, SalesOrderItems } from '@models/sales';
+import { Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from '@models/sales';
 import { create } from 'axios';
 export default(service: Service ) =>{
     service.after('READ', 'Customers', (results:Customers) => {
@@ -44,6 +44,29 @@ export default(service: Service ) =>{
       if (!customer){
         return request.reject(404,'Customer não encontrado');
       }
+
+     const productsIds: string[] = params.items.map((item : SalesOrderItem) => item.product_id);
+     const productsQuery = SELECT.from('sales.Products').where({id: productsIds});
+     const products : Products = await cds.run(productsQuery);
+     const dbProducts = products.map((product) => product.id);
+
+     for(const item of params.items){
+          const dbProduct = products.find(product => product.id === item.product_id);
+          if (!dbProduct){
+               return request.reject(404, `Produto ${item.product_id} não encontrado`);
+          }
+          if (dbProduct.stock === 0){
+            return request.reject(400,`Produto ${dbProduct.name} sem estoque`);
+
+          }
+     }
+
+
+
+
+
+
+
     });
 
     service.after('CREATE', 'SalesOrderHeaders', async (results: SalesOrderHeaders) => {
