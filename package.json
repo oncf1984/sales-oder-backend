@@ -17,7 +17,7 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "start": "cds-serve",    
+    "start": "cds-serve",
     "dev": "cds-tsx watch"
   },
   "private": true
