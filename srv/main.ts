@@ -78,10 +78,20 @@ export default(service: Service ) =>{
     params.items.forEach(item => {
       totalAmount += (item.price as number) * (item.quantity as number);
     });
+    
+    console.log(`Antes do desconto: ${totalAmount}`);
+    if (totalAmount > 200) {
+      const discount = totalAmount  * (10/100);
+      totalAmount  = totalAmount - discount;
+    }
+    console.log(`Depois do desconto ${totalAmount}`);
+
 
      request.data.totalAmount = totalAmount;
 
     });
+
+
 
     service.after('CREATE', 'SalesOrderHeaders', async (results: SalesOrderHeaders) => {
        const headerAsArray = Array.isArray(results) ? results : [results] as SalesOrderHeaders;
