@@ -3,6 +3,7 @@
 
 Get http://{{localhost}}/Customers
 Content-type: application/json
+Authorization: Basic ofilho:123
 
 ###
 //busca apenas 1 registro

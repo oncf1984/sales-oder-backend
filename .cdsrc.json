@@ -1,0 +1,46 @@
+{
+    "[development]": {
+        "requires": {
+            "db": {
+                "credentials": {
+                    "database": ":memory:"
+                },
+                "kind": "sqlite"
+            },
+            "auth": {
+                "kind": "basic",
+                "users": {
+                    "ofilho": {
+                        "password": "123",
+                        "roles": ["admin", "read_only_user22"],
+                        "attr": {
+                            "id": 1,
+                            "groups": ["grupo1", "grupo2"]
+                        }
+                    },
+                    "camelgt": {
+                        "password": "123",
+                        "roles": ["read_only_user"],
+                        "attr": {
+                            "id": 2,
+                            "groups": ["grupo1"]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "[production]": {
+        "requires": {
+            "db": {
+                "kind": "hana"
+            },
+            "uaa": {
+                "kind": "xsuaa"
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    }
+}
