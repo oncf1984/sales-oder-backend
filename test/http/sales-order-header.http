@@ -12,6 +12,7 @@ Content-type: application/json
 // busca apenas 1 registro
 Get http://{{localhost}}/SalesOrderHeaders({{id}})?$expand=items($select=price)
 Content-type: application/json
+Authorization: Basic ofilho:123
 
 ###
 //criação novo registro

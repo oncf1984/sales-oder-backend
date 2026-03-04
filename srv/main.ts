@@ -17,6 +17,9 @@
 import cds, { Request, Service } from '@sap/cds';
 import { Customers, Product, Products, SalesOrderHeaders, SalesOrderItem, SalesOrderItems } from '@models/sales';
 import { create } from 'axios';
+import { CustomerServiceImpl } from './services/customer/implementation';
+import { FullRequestParams } from './protocols';
+import { customerController } from './factories/controllers/customer';
 export default(service: Service ) =>{
   
   service.before('READ','*',(request: Request) =>{
@@ -31,14 +34,23 @@ export default(service: Service ) =>{
     }    
   });
 
-  service.after('READ', 'Customers', (results:Customers) => {
-      console.log(results.at(-1));
+  service.after('READ', 'Customers', async (results:Customers, request) => {
+/*       console.log(results.at(-1));
 
       results.forEach(customer =>{
         if (!customer.email?.includes('@')){
             customer.email = `${customer.email}@hotmail.com`
         }
       })
+ */   
+/*       const service = new CustomerServiceImpl();
+      const retorno =  service.afterRead(results);
+      
+      // console.log(retorno);
+      results.length = 0;
+      results.push(...retorno); */
+
+      (request as unknown as FullRequestParams<Customers>).results = customerController.afterRead(results);
     });
 
     service.before('CREATE','SalesOrderHeaders', async (request:Request) =>{
