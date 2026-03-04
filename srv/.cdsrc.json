@@ -8,30 +8,20 @@
                 "kind": "sqlite"
             },
             "auth": {
-                "kind": "basic",
-                "users": {
-                    "ofilho": {
-                        "password": "oncf@123",
-                        "roles": [
-                            "admin"
-                        ],
-                        "attr": {
-                            "id": 1,
-                            "groups": [
-                                "group1",
-                                "group2"
+                "passport": {
+                    "strategy": "mock",
+                    "users": {
+                        "ofilho": {
+                            "password": "123",
+                            "roles": [
+                                "admin"
                             ]
-                        }
-                    },
-                    "camelgt": {
-                        "password": "nsdg2846",
-                        "roles": [
-                            "read_only_user"
-                        ],
-                        "attr": {
-                            "id": 2,
-                            "groups": [
-                                "group1"
+                        },
+                        "alice": {
+                            "password": "password",
+                            "roles": [
+                                "admin",
+                                "viewer"
                             ]
                         }
                     }
