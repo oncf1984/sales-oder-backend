@@ -17,11 +17,12 @@ Content-type: application/json
 //criação novo registro
 post http://localhost:4004/odata/v4/main/SalesOrderHeaders
 Content-type: application/json
+Authorization: Basic ofilho:123
 
 {
    "id": "{{id}}",
    "customer_id": "{{customerID}}",
-   "totalAmount": 220,
+   "totalAmount": 999,
    "items":[
     {
       "id": "bd5f05e1-6dd8-4e0c-ba31-b1e41462bcbe",

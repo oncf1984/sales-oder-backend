@@ -74,11 +74,12 @@ export default(service: Service ) =>{
           }
      }
 
+    let totalAmount = 0;
+    params.items.forEach(item => {
+      totalAmount += (item.price as number) * (item.quantity as number);
+    });
 
-
-
-
-
+     request.data.totalAmount = totalAmount;
 
     });
 

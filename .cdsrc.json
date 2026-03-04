@@ -12,7 +12,7 @@
                 "users": {
                     "ofilho": {
                         "password": "123",
-                        "roles": ["admin", "read_only_user22"],
+                        "roles": ["admin", "read_only_user"],
                         "attr": {
                             "id": 1,
                             "groups": ["grupo1", "grupo2"]
